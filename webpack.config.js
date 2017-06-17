@@ -12,7 +12,10 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                use: 'babel-loader'
+                exclude: /node_modules/,
+                use: [
+                    {loader: 'babel-loader'},
+                ],
             },
             {
                 test: /\.less$/,
@@ -25,5 +28,8 @@ module.exports = {
                 }]
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({template: './index.html'})
+    ]
 };
